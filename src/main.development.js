@@ -6,6 +6,9 @@ let mainWindow = null;
 
 
 if (process.env.NODE_ENV === 'development') {
+  const path = require('path');
+  const PATH_APP_NODE_MODULES = path.join(__dirname, '..', 'app', 'node_modules');
+  require('module').globalPaths.push(PATH_APP_NODE_MODULES);
   require('electron-debug')(); // eslint-disable-line global-require
 }
 
