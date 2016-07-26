@@ -17,8 +17,16 @@
     "start-hot": "cross-env HOT=1 NODE_ENV=development electron -r babel-register -r babel-polyfill ./src/main.development",
     "package": "cross-env NODE_ENV=production node -r babel-register package.js",
     "package-all": "npm run package -- --all",
-    "postinstall": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json",
-    "dev": "concurrently --kill-others \"npm run hot-server\" \"npm run start-hot\""
+    "check-dev-engines": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json",
+    "dev": "concurrently --kill-others \"npm run hot-server\" \"npm run start-hot\"",
+    "install-app-deps": "install-app-deps",
+    "postinstall": "concurrently \"npm run install-app-deps\" \"npm run check-dev-engines\"",
+    "pack": "build --dir",
+    "dist": "build",
+    "build-package": "npm run build && npm run pack",
+    "builder": "npm run build && npm run dist",
+    "builder:win": "npm run build && build --win --x64",
+    "builder:linux": "npm run build && build --linux"
   },
   "bin": {
     "electron": "./node_modules/.bin/electron"
