@@ -124,5 +124,25 @@
   "devEngines": {
     "node": "4.x || 5.x || 6.x",
     "npm": "2.x || 3.x"
+  },
+  "build": {
+    "appId": "com.electron-react-boilerplate",
+    "app-category-type": "public.app-category.business",
+    "asar": false,
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    }
   }
 }
